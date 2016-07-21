@@ -22,8 +22,10 @@ def getConnection(usr, pswd, hst, db):
 
 
 # p is object inserting to database
-#conn is connection to SQL
+# conn is connection to SQL
+# returns true if could add person
 def addPerson(p, conn):
+    success = False
     try:
         add = """INSERT INTO Persons(      
             first_name,
@@ -37,8 +39,10 @@ def addPerson(p, conn):
     except mc.Error as e:
         print(e.msg)
     finally:
+        success = True
         cursor.close()
 
+    return success
 
 # p is object delete from database
 # conn is connection to SQL
@@ -124,23 +128,24 @@ def selectAllPersons(conn):
                        
 
 ########### Code to be executed
-person1 = Person.Person("Chiu", "Kok")
-person2 = Person.Person("Harem", "Lord")
-person3 = Person.Person("Goat", "Defiler")
 
-con = getConnection("root", "password", "localhost", "myFirstDB")
-#delPerson(person1, con)
-#addPerson(person2, con)
-#addPerson(person3, con)
+# person1 = Person.Person("Chiu", "Kok")
+# person2 = Person.Person("Harem", "Lord")
+# person3 = Person.Person("Goat", "Defiler")
+
+#con = getConnection("root", "password", "localhost", "myFirstDB")
+# #delPerson(person1, con)
+# #addPerson(person2, con)
+# #addPerson(person3, con)
 
 
-#personToFind = selectByPersonID("1", con)
-#personToFind.printInfo()
+# #personToFind = selectByPersonID("1", con)
+# #personToFind.printInfo()
 
-personList = selectAllPersons(con)
+# personList = selectAllPersons(con)
 
-for p in personList:
-    p.printInfo()
+# for p in personList:
+#     p.printInfo()
 
     #print(first_name + " " + last_name + "\n")
 

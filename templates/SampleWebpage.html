@@ -5,6 +5,45 @@
 		<h1>Random Test Page</h1>
 		<p = "Website Database Practice">Testing for first Python and mySQL database integration</p>
 
+		<!-- scriplet use Javascript stuff
+		Prints first and last names of all people
+		who have submitted their form
+		-->
+
+		<!-- Variable declarations -->
+		{% for per in all_persons %}
+			{{per.first_name}} <br>
+			{{per.last_name}} <br>
+			<br>
+		{% endfor %}
+
+
+<!-- 		<%! int i = 1; %>
+		<%
+			for per in all_persons {
+				String a = "Person " + i + "<br>";
+				String b = per.first_name "<br>";
+				String c = per.last_name "<br>";
+			}
+		%>
+
+		<% 
+			a "<br>"
+			b "<br>"
+			c "<br>"
+
+		%> -->
+
+		<!-- put name of fxn in for() want to call when user submits form -->
+		<form action = "{{ url_for('register') }}" method=post>
+			
+			First name: <input type="text" name="FirstName"><br>
+			
+			Last name: <input type="text" name="LastName"><br>
+			
+			<input type="submit" value="Submit">
+
+		</form>
 
 	</body>
 </html>
